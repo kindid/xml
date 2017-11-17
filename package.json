@@ -4,7 +4,7 @@
   "description": "",
   "main": "xml.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node tests/xml_test.js"
   },
   "author": "code@kuiash.com",
   "license": "UNLICENSED"
