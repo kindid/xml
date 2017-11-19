@@ -1,11 +1,11 @@
 {
   "name": "xml",
-  "version": "1.0.0",
-  "description": "",
+  "version": "1.0.2",
+  "description": "A simple to use XML generator for Node.js",
   "main": "xml.js",
   "scripts": {
     "test": "node tests/xml_test.js"
   },
   "author": "code@kuiash.com",
-  "license": "UNLICENSED"
+  "license": "BSD-3-Clause-Clear"
 }

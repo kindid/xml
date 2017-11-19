@@ -1,12 +1,10 @@
-# ```xml``` A Simple XML generator for node. An experiment in learning.
-
-## PLEASE NOTE; This API is considered to be "in progress". In particular it has yet to be decided if the complicated test in ```x.el``` for attributes remains or whether it is mandatory that all child elements are placed in an array, this would add extra markup to the Javascript but would (may) make the internal engine easier to understand.
+# ```xml``` A Simple XML generator for Node.js
 
 ### Exports
 
 name | function
 -----|----------------------------
-el | Creates a new XML element. If the element has no name then it is simply a collection of further elements (equivalent )
+el | Creates a new XML element. If the element has no name then it is simply a collection of further elements. It has no name and therefore can not have any attributes (only its children exist in the output)
 tx | codereates a single text node
 uc | Unclosed element like '<!DOCTYPE>', 'link', 'meta' etc
 li | Just a list (same as a unnamed element)
@@ -36,16 +34,20 @@ If the second parameter of 'el' or 'uc' is an object then the key/value
 pairs will be rendered as XML attributes.
 
 All subsequent parameters are treated this way
-    If an array is passed in then all children (and children/children)
-        of this array are added to the 'this' element. That is the
-        arrays are flattened. This makes the creation of tables and
-        lists much easier
-    Is an XNode is passed (an object create by el/tx/uc/xr) then it is
-        simply appended as a child element, in order to the 'this'
-        element
-    If the object is of any other type the parameter.toString() is
-        called to render it as a text element. This allows JS types
-        strings, numbers, bool, Date, null etc to be converted strings
+- If an array is passed in then all children (and children/children) of this array are added to the 'this' element.
+ - That is the arrays are flattened. This makes the creation of tables and lists much easier
+ - Is an XNode is passed (an object create by el/tx/uc/xr) then it is simply appended as a child element, in order to the 'this' element
+- If the object is of any other type the parameter.toString() is called to render it as a text element. This allows JS types strings, numbers, bool, Date, null etc to be converted strings
+
+Calling Parameters | Meaning
+-------------------|--------
+string                   | empty element
+string, xnode, ...       | element with no attributes, has children
+string, object           | element with attributes
+string, object, xnode... | element with attributes
+string, array, ...       | element with no attributes, has children
+string, string, ...      | element with string child and more
+string, object, array    | element with attributes and children
 
 ### Examples
 
